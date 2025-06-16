@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Equipment;
 use Illuminate\Database\Eloquent\Model;
 
 class OrderEequipment extends Model
@@ -14,4 +15,17 @@ class OrderEequipment extends Model
         'returned_quantity',
         'status',
     ];
+    public function equipment()
+    {
+        return $this->belongsTo(Equipment::class);
+    }
+
+     public function order()
+    {
+        return $this->belongsTo(Order::class);
+    }
+
+     public function log(){
+        return $this->hasMany(Log::class);
+    }
 }
